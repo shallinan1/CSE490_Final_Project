@@ -6,6 +6,8 @@ Write a 3-4 sentence abstract. It should introduce the problem and your approach
 
 VIDEO GOES HERE (probably): Record a 2-3 minute long video presenting your work. One option - take all your figures/example images/charts that you made for your website and put them in a slide deck, then record the video over zoom or some other recording platform (screen record using Quicktime on Mac OS works well). The video doesn't have to be particularly well produced or anything.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/u0XEFaEItrQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Introduction
 
 In this section the problem you are working on. Maybe talk about why you thought it was interesting. Or why you think it needs to get solved.
