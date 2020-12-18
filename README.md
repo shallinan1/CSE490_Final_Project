@@ -31,7 +31,8 @@ How did you evaluate your approach? How well did you do? What are you comparing 
 
 You may want some qualitative results and quantitative results. Example images/text/whatever are good. Charts are also good. Maybe loss curves or AUC charts. Whatever makes sense for your evaluation.
 
-![epochsnodes2](https://user-images.githubusercontent.com/28735634/102577347-b7f87c80-40ac-11eb-88db-f8cad70d18be.png)
+![epochsnodes2](https://user-images.githubusercontent.com/28735634/102577550-19b8e680-40ad-11eb-9a61-43e7fc0fcc93.png)
+
 
 ## Discussion
 
