@@ -5,7 +5,6 @@
 Write a 3-4 sentence abstract. It should introduce the problem and your approach. You may also want some numbers like 35 mAP and 78% accuracy. You can use this example README for your project, you can use a different ordering for your website, or you can make a totally different website altogether!
 
 VIDEO GOES HERE (probably): Record a 2-3 minute long video presenting your work. One option - take all your figures/example images/charts that you made for your website and put them in a slide deck, then record the video over zoom or some other recording platform (screen record using Quicktime on Mac OS works well). The video doesn't have to be particularly well produced or anything.
-https://user-images.githubusercontent.com/28735634/102591224-88ef0480-40c6-11eb-9d15-1ad56516076b.mp4
 
 [![Video](https://img.youtube.com/vi/u0XEFaEItrQ/0.jpg)](https://www.youtube.com/watch?v=u0XEFaEItrQ)
 
