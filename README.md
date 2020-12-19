@@ -6,7 +6,7 @@
 
 In this project we analyze informal NBA player interviews in an effort to estimate player sentiment. We use Bidirectional and Base LSTM models to process the interviews and end up with a peak accuracy of around 35-40%. With more data, we expect this accuracy to increase drastically.
 
-VIDEO GOES HERE (probably): Record a 2-3 minute long video presenting your work. One option - take all your figures/example images/charts that you made for your website and put them in a slide deck, then record the video over zoom or some other recording platform (screen record using Quicktime on Mac OS works well). The video doesn't have to be particularly well produced or anything.
+[![Video](https://img.youtube.com/vi/bETRLMpLvsU/0.jpg)](https://www.youtube.com/watch?v=u0XEFaEItrQ)
 
 ## Introduction
 
