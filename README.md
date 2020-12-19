@@ -4,7 +4,7 @@
 
 ## Abstract
 
-Write a 3-4 sentence abstract. It should introduce the problem and your approach. You may also want some numbers like 35 mAP and 78% accuracy. You can use this example README for your project, you can use a different ordering for your website, or you can make a totally different website altogether!
+In this project we analyze informal NBA player interviews in an effort to estimate player sentiment. We use Bidirectional and Base LSTM models to process the interviews and end up with a peak accuracy of around 35-40%. With more data, we expect this accuracy to increase drastically.
 
 VIDEO GOES HERE (probably): Record a 2-3 minute long video presenting your work. One option - take all your figures/example images/charts that you made for your website and put them in a slide deck, then record the video over zoom or some other recording platform (screen record using Quicktime on Mac OS works well). The video doesn't have to be particularly well produced or anything.
 
@@ -26,8 +26,8 @@ With the new corpus, we train several sentiment classification models with a var
 
 ## Related Work
 
+We found a study that predicted in-game performances based on previous performance metrics in addition to player interviews before the game. This study used neural networks to combine text data and numerical performance data into one model. They tried many different approaches including Bag of Words with TFIDF, LSTM, BiLSTM, DNN, CNN, and a BERT model. Their accuracy exceeded that of analyzing performance metrics alone. The biggest difference between their study and ours is that they were able to draw from over 5,000 player interviews across 10 years whereas we were limited to however much we could closely transcribe in a couple weeks: 143 interviews.
 https://arxiv.org/abs/1910.11292
-These people performed a similar analysis on NBA player interviews using neural networks but they also included performance metrics such as shooting percentage to predict player performance. They tried many different approaches including Bag of Words with TFIDF, LSTM, BiLSTM, DNN, CNN, and a BERT model. Their accuracy exceeded that of analyzing performance metrics alone. The biggest difference between their study and ours is that they were able to draw from over 5,000 player interviews across 10 years whereas we were limited to however much we could closely transcribe in a couple weeks: 143 interviews.
 
 
 ## Approach
@@ -41,7 +41,7 @@ Once we had the interviews annotated, we next had to annotate the sentiment for 
 * 3: Extremely happy/content
 This took about 2 minutes per interview so roughly 4 hours total
 
-Once we had all the data we were going to use for this project, we started working on finding the best model that could fit our data. We considered parsing our data character-by-character and word-by-word. We also considered using a bag-of-words approach but thought that sequence based models would perform better than simply counting appearances of words. For this reason, we relied on LSTM and Bidirectional LSTM models for both character-by-character and word-by-word parsing. We also tried multi-layer LSTM models but found that it offered little benefit, if any to the accuracy. Since the interviews varied significantly in length, we briefly explored sub-sampling but found that it made the accuracy way worse, little better than guessing. We found that character-by-character parsing performed slightly better after tuning hyper-parameters.
+Once we had all the data preprocessed, we started working on finding the best model that could fit our data. We considered parsing our data character-by-character and word-by-word. We also considered using a bag-of-words approach but thought that sequence based models would perform better than simply counting appearances of words. For this reason,we relied on LSTM and Bidirectional LSTM models for both character-by-character and word-by-word parsing. A Bidirectional LSTM is an LSTM that takes into account future words into its prediction. We also tried multi-layer LSTM models because we thought that a more complicated model could perform better than the simpler models we tried earlier but found that it offered little benefit, if any to the accuracy. This is probably because we were already overfitting with the simpler model based on the limited amount of data we had. For the word based sequencing, we tried varying the word embedding length which gave interesting results. Since the interviews varied significantly in length, we briefly explored sub-sampling but found that it made the accuracy way worse, little better than guessing. We found that character-by-character parsing performed slightly better after tuning hyper-parameters. To generate the data, we took averages of 3 runs for each of the settings of the hyper-parameters to ensure that we were not getting bogus results.
 
 ## Results
 
@@ -98,6 +98,8 @@ Before this project, we knew that machine learning took a lot of data to be effe
 In the future, we want to use something like this to predict trades before they occur: if a player is consistently receiving low sentiment marks in his interviews, it likely means he wants out of a team and a trade is imminent.
 
 Additionally, since the size/length of the interviews varied so much (from just a few sentences to paragraphs in length), we also want to consider more deeply sub-sampling because we believe it could be very promising if we had more data.
+
+We could also look into pre-trained word embeddings like glove which show similarities between words (for example, if there is a vector that corresponds to the word: “king”, we could subtract the vector for “man” and add the vector for “woman” and get a vector that looks like “queen”. This could be useful when a new word shows up in a new interview that we have not seen before but is very similar to another word: (think “magnificent” and “great” as an example).
 
 ## Demo
 ![Demo](https://user-images.githubusercontent.com/28735634/102678608-6f999700-415e-11eb-8b0c-35262254834c.gif)
