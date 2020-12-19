@@ -41,13 +41,18 @@ Once we had the interviews annotated, we next had to annotate the sentiment for 
 * 3: Extremely happy/content
 This took about 2 minutes per interview so roughly 4 hours total
 
-Once we had all the data preprocessed, we started working on finding the best model that could fit our data. We considered parsing our data character-by-character and word-by-word. We also considered using a bag-of-words approach but thought that sequence based models would perform better than simply counting appearances of words. For this reason,we relied on LSTM and Bidirectional LSTM models for both character-by-character and word-by-word parsing. A Bidirectional LSTM is an LSTM that takes into account future words into its prediction. We also tried multi-layer LSTM models because we thought that a more complicated model could perform better than the simpler models we tried earlier but found that it offered little benefit, if any to the accuracy. This is probably because we were already overfitting with the simpler model based on the limited amount of data we had. For the word based sequencing, we tried varying the word embedding length which gave interesting results. Since the interviews varied significantly in length, we briefly explored sub-sampling but found that it made the accuracy way worse, little better than guessing. We found that character-by-character parsing performed slightly better after tuning hyper-parameters. To generate the data, we took averages of 3 runs for each of the settings of the hyper-parameters to ensure that we were not getting bogus results.
+We did a little bit of pre-processing on our data: we removed punctuation from the text, converted the 0-3 sentiment scores to one-hot vectors, and converted the words/characters to vectors by using keras’ pad_sequence which adds or truncates data from the text vector if it is not the proper length. We also split up our data into train and test sets to make sure our teset accuracy was accurate.
+
+Once we had all the data preprocessed, we started working on finding the best model that could fit our data. We considered parsing our data character-by-character and word-by-word. We also considered using a bag-of-words approach but thought that sequence based models would perform better than simply counting appearances of words. For this reason, we relied on LSTM and Bidirectional LSTM models for both character-by-character and word-by-word parsing. A Bidirectional LSTM is an LSTM that takes into account future words into its prediction. For both character and word, we also tried multi-layer LSTM models because we thought that a more complicated model could perform better than the simpler models we tried earlier but found that it offered little benefit, if any to the accuracy. This is probably because we were already overfitting with the simpler model based on the limited amount of data we had. We also tried varying the batch size for both character and word based models as another hyper-parameter test. To generate the data, we took averages of 3 runs for each of the settings of the hyper-parameters to ensure that we were not getting bogus results.
 
 ![132012084_671673920184354_8767085777290283440_n](https://user-images.githubusercontent.com/47925992/102682350-c6629900-417d-11eb-8fca-202a603ccbcf.png)
-Character-Based Model
+We varied the following unique hyper-parameters in character-based parsing:
+* dropout rate
+* epochs
+We found that character-by-character parsing performed slightly better after tuning hyper-parameters. 
 
 ![131986515_427335658675797_4274136360118186489_n](https://user-images.githubusercontent.com/47925992/102682351-c6629900-417d-11eb-951b-7a93af0b525c.png)
-Word-Based Model
+For the word based sequencing, we tried varying the word embedding length which gave interesting results. Since the interviews varied significantly in length, we briefly explored sub-sampling but found that it made the accuracy way worse, little better than guessing.
 
 ## Results
 
