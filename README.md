@@ -46,7 +46,10 @@ This took about 2 minutes per interview so roughly 4 hours total
 Once we had all the data preprocessed, we started working on finding the best model that could fit our data. We considered parsing our data character-by-character and word-by-word. We also considered using a bag-of-words approach but thought that sequence based models would perform better than simply counting appearances of words. For this reason,we relied on LSTM and Bidirectional LSTM models for both character-by-character and word-by-word parsing. A Bidirectional LSTM is an LSTM that takes into account future words into its prediction. We also tried multi-layer LSTM models because we thought that a more complicated model could perform better than the simpler models we tried earlier but found that it offered little benefit, if any to the accuracy. This is probably because we were already overfitting with the simpler model based on the limited amount of data we had. For the word based sequencing, we tried varying the word embedding length which gave interesting results. Since the interviews varied significantly in length, we briefly explored sub-sampling but found that it made the accuracy way worse, little better than guessing. We found that character-by-character parsing performed slightly better after tuning hyper-parameters. To generate the data, we took averages of 3 runs for each of the settings of the hyper-parameters to ensure that we were not getting bogus results.
 
 ![132012084_671673920184354_8767085777290283440_n](https://user-images.githubusercontent.com/47925992/102682350-c6629900-417d-11eb-8fca-202a603ccbcf.png)
+Character-Based Model
+
 ![131986515_427335658675797_4274136360118186489_n](https://user-images.githubusercontent.com/47925992/102682351-c6629900-417d-11eb-951b-7a93af0b525c.png)
+Word-Based Model
 
 ## Results
 
