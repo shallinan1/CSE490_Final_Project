@@ -1,7 +1,6 @@
 # Classifying NBA Player Sentiment with a New Corpus
 ## Skyler Hallinan, Arthur Beyer
-## CSE 490G1 Final Project
-<h2> 12.18.20 </h2>
+### CSE 490G1 Final Project, 12.18.2020
 ## Abstract
 In this project we analyze informal NBA player interviews in an effort to estimate player sentiment. First, we construct a novel corpus consisting of informal player interviews and annotated sentiment on a scale of 0-3. Next, we build sentiment classification models using various LSTM networks, and end up with average accuracies of our best models around 43%, and peak accuracy (a single run) of about 51%. With more data, we expect this accuracy to increase drastically.
 
