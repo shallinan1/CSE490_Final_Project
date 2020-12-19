@@ -62,7 +62,7 @@ For step 5, we tried varying the following to see how they could affect our clas
 
 Note the dashed lines indicate multiple potential paths in architecture setup.
 
-We had a masking layer after our input to ignore parts of the sequence that were just padding. From the above diagram, we extensively explored the following type of networks with different hyperparameters: LSTM, birectional LSTM, LSTM with dropout, birectional LSTM with dropout. Note that although our diagram includes multi-layer LSTM networks, we did not generate extensive data for that due to poor performance. After our LSTM, we had a single linear layer that mapped to a classification using a softmax activation function. For this task, we used categorical cross entropy loss, and Adam as our optimizer with a learning rate of 0.01.
+We had a masking layer after our input to ignore parts of the sequence that were just padding. From the above diagram, we extensively explored the following type of networks with different hyperparameters: LSTM, birectional LSTM, LSTM with dropout, birectional LSTM with dropout. Note that although our diagram includes multi-layer LSTM networks, we did not generate extensive data for that due to poor performance. After our LSTM, we had a single linear layer that mapped to a classification using a softmax activation function. For this task, we used categorical cross entropy loss, and Adam as our optimizer with a learning rate of 0.01.  We extensively looked at the effects of number of nodes in our LSTM in our results for this model.
 
 Next, we started off with a word-level model. Our pipeline was as follows:
 
@@ -79,15 +79,17 @@ For step 1, our preprocessing consisted of removing punctuation from the text. F
 
 Note the dashed lines indicate multiple potential paths in architecture setup.
 
-Once again, we had a masking layer to ignore parts of the sequence that were just padding. From the above diagram, we extensively explored the following type of networks with different hyperparameters: LSTM, birectional LSTM, two LSTMs, two birectional LSTMs. After our LSTM(s), we had a single linear layer that mapped to a classification using a softmax activation function. For this task, we used categorical cross entropy loss, and Adam as our optimizer with a learning rate of 0.01. We extensively looked at the effects of embedding vector length in our results.
+Once again, we had a masking layer to ignore parts of the sequence that were just padding. From the above diagram, we extensively explored the following type of networks with different hyperparameters: LSTM, birectional LSTM, two LSTMs, two birectional LSTMs. After our LSTM(s), we had a single linear layer that mapped to a classification using a softmax activation function. For this task, we used categorical cross entropy loss, and Adam as our optimizer with a learning rate of 0.01. We extensively looked at the effects of embedding vector length in our results for this model.
 
 ## Results
 
 We evaluated our results using test accuracy: how many in the test set our model got correct divided by how many total are in the test set; we used an 80/20 split for our train and test data for this project. Even though our accuracy in these graphs seems low, we believe it is actually high considering how little data we had (see discussion section).
 
+Below are first our character level sequence model results:
+
 ### Character Level Results with Full Sequence Padding
 ![epochsBatchSizeBase](https://user-images.githubusercontent.com/28735634/102665671-13248080-413a-11eb-8804-141df86c8956.png)
-The batch size seems not to affect the accuracy very much, but 16 was the best. We used this as our batch size for all future experiments.
+We first tested batch size vs number of nodes in our LSTM. However, the batch size seemed to not to affect the accuracy very much, but 16 was the best. We used this as our batch size for all future experiments with this character-based model. Next, we tested the number of epochs in our model vs the number of nodes in our LSTM:
 
 ![epochsnodesBaseLstm](https://user-images.githubusercontent.com/28735634/102581159-d6627600-40b4-11eb-83b4-b073133c8dda.png)
 This one had a batch size of 16 and a padding size of 500. Note the accuracy for 50 nodes at 5 epochs is high but it decreases as the number of epochs increases. This could imply that we are overfitting at 50 nodes.
