@@ -111,7 +111,7 @@ Next, we moved on to the word sequence experiments.
 
 ### Word Level Experiment Results with Full Sequence Padding
 ![bsize_nodes](https://user-images.githubusercontent.com/47925992/102675466-5688ea00-414e-11eb-8aab-282f2d900b5c.png)
-For our word sequence experiments, we first looked at the effects of batch size on our data, as we also varied number of nodes in our single LSTM. Batch size did seem to change the accuracy of the model but oddly, a batch size of 16 performed well but a batch size of 64 performed arguably just as well, just with a higher variance. We used a batch size of 16 for the rest of our experiments. Note our max accuracy was about 0.36 here with 5 LSTM nodes.
+For our word sequence experiments, we first looked at the effects of batch size on our data, as we also varied number of nodes in our single LSTM. For all experiments including this one, we used 10 epochs. Batch size did seem to change the accuracy of the model but oddly, a batch size of 16 performed well but a batch size of 64 performed arguably just as well, just with a higher variance. We used a batch size of 16 for the rest of our experiments. Note our max accuracy was about 0.36 here with 5 LSTM nodes. F
 
 ![bsize_nodes_bidirectional](https://user-images.githubusercontent.com/47925992/102675471-57218080-414e-11eb-979c-339346806614.png)
 We repeated the above experiment but with a bidrectional LSTM. Differences across batch size were pretty negligible. Here our max accuracy was a batch size of 8, 35 nodes in our LSTM, and an accuracy of 0.37. We note the batch size seems to have a medium point where the variance explodes then gets smaller on both ends of the middle. Overall, even with these results we used 16 as our batch size for our experiments.
@@ -123,12 +123,12 @@ Next, we tried varying the embedding vector length and changing the number of no
 We repeated the above experiment but with bidirectional LSTM. It had a lower variance than the base LSTM but a slightly lower average accuracy across all nodes, peaking at about 0.35 with 5 nodes an embedding size of 64. Therefore, the results were slightly worse than with the base LSTM.
 
 ![evls_nodes_multi](https://user-images.githubusercontent.com/47925992/102675464-55f05380-414e-11eb-8548-acf881bbf153.png)
-For the word tests, we kept the epochs constant at 10 and instead opted to change the embedding vector length and the number of nodes in our baset LSTM. Our best accuracy
+Finally, we tested a multi LSTM network with two LSTM layers and multiple embedding vector lengths. Note that in our first LSTM layer we had 50 nodes while we varied only the number of nodes in the second LSTM. We achieved a max average accuracy of about 0.39 with 35 nodes in our second LSTM and an embedding vector length of 32. This is higher than any other max average accuracy in the other networks we tried. Therefore, this multi LSTM network did pretty well.
 
 ![evls_nodes_multi_bi](https://user-images.githubusercontent.com/47925992/102675465-5688ea00-414e-11eb-8857-9b6237b122e3.png)
-Bidirectional does not seem to significantly improve performance over a base LSTM.
+Finally, we repeated the above with a stacked bidirectional network, changing the number of nodes in only the second layer (the first LSTM was fixed at 50 nodes). Although the results on average were slightly worse than the multi-layer base LSTM network, we still had a model with good accuracy: with 25 nodes and an embedding length of 16, the model had an accuracy of 0.39, tying it for best with the previous network.
 
-
+Overall, the word based models were worse than the character-based models, peaking with an accuracy of 0.39 in both stacked LSTM networks (base and bidirectional). The stacked network architechture helped the performance and did not delay training too much, so it is probably worth it. However, the character-based model was better so we would recommen using that instead.
 
 Finally, we describe our overall results.
 ### Overall results
@@ -139,13 +139,13 @@ Overall, the character-models performed better than the word-based model with th
 ![best_Word](https://user-images.githubusercontent.com/28735634/102678553-33fecd00-415e-11eb-86dc-f5e16fb7949a.png)
 
 
-The word-based models had lower accuracy and peaked at about 0.39. They seemed to perform best with a stacked bidirectionl LSTM and 35 nodes in the second LSTM, and 50 nodes in the first LSTM, achieving the highest classification accuracy. Overall, the results were varied across network types, but all were worse than the character-based models.
+The word-based models had lower accuracy and peaked at about 0.39. They seemed to perform best with a stacked bidirectional LSTM and 35 nodes in the second LSTM, and 50 nodes in the first LSTM, achieving the highest classification accuracy. Overall, the results were varied across network types, but all were worse than the character-based models.
 
 ## Discussion
 
-Before this project, we knew that machine learning took a lot of data to be effective but we did not know how much work and time needs to go into generating the data. Even after over 40 hours combined of work, we still feel like we had a tiny dataset. Since we had so little data, we certainly were not expecting super high classification accuracies. With something as complicated as natural language processing, we were expecting abysmal results with only 143 data points. But we actually got a relatively high accuracy all things considered: hovering around 43% which is significantly better than guessing which should be around 25%. If we had more data, we expect our accuracy to increase significantly.
+Before this project, we knew that machine learning took a lot of data to be effective but we did not know how much work and time needs to go into generating the data. Even after over 40 hours combined of work, we still feel like we had a tiny dataset. Since we had so little data, we certainly were not expecting super high classification accuracies. With something as complicated as natural language processing, we were expecting abysmal results with only 143 data points. But we actually got a relatively high accuracy (with the character-based network) all things considered: hovering around 43% which is significantly better than guessing which should be around 25%. If we had more data, we expect our accuracy to increase significantly. We were surprised that the accuracy with words was almost 4% lower than with characters, but this may be an artifact of small sample size.
 
-In the future, we want to use something like this to predict trades before they occur: if a player is consistently receiving low sentiment marks in his interviews, it likely means he wants out of a team and a trade is imminent. This could be helpful in the betting scenes, were people often place prop bets on players being traded to different destinations. However, it would be most helpful for competitor teams to know when trades were able to happen, as they could prepare accordingly for the future.
+In the future, we might construct a system like this to predict trades before they occur: if a player is consistently receiving low sentiment marks in his interviews, it likely means he wants out of a team and a trade is imminent. This could be helpful in the betting scenes, were people often place prop bets on players being traded to different destinations. However, it would be most helpful for competitor teams to know when trades were able to happen, as they could prepare accordingly for the future.
 
 Additionally, since the size/length of the interviews varied so much (from just a few sentences to paragraphs in length), we also want to consider more deeply sub-sampling because we believe it could be very promising if we had more data. Sub-sampling would consist of choosing smaller, random sequences from our preexisting dataset. This has the effect of homogeneizing the length of our sequences and reducing huge variability in length. It also increases our sample size because we can generate multiple interview snippets from a single interview. Using this method in the future might help us obtain more data, but we would have to be careful to make sure we're not overdoing it. 
 
