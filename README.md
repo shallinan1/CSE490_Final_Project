@@ -116,17 +116,18 @@ For our word sequence experiments, we first looked at the effects of batch size 
 ![bsize_nodes_bidirectional](https://user-images.githubusercontent.com/47925992/102675471-57218080-414e-11eb-979c-339346806614.png)
 We repeated the above experiment but with a bidrectional LSTM. Differences across batch size were pretty negligible. Here our max accuracy was a batch size of 8, 35 nodes in our LSTM, and an accuracy of 0.37. We note the batch size seems to have a medium point where the variance explodes then gets smaller on both ends of the middle. Overall, even with these results we used 16 as our batch size for our experiments.
 
+![evls_nodes](https://user-images.githubusercontent.com/47925992/102675469-57218080-414e-11eb-9fe3-c4458c226e4f.png)
+Next, we tried varying the embedding vector length and changing the number of nodes in a single LSTM. Increasing vector embedding potentially allows for more complex representations of words. This gave interesting results. It seems like length 32 with 15 LSTM nodes had the highest accuracy here, with an average accuracy of about 0.36.
+
+![evls_nodes_bidirectional](https://user-images.githubusercontent.com/47925992/102675470-57218080-414e-11eb-8479-e1064354588f.png)
+We repeated the above experiment but with bidirectional LSTM. It had a lower variance than the base LSTM but a slightly lower average accuracy across all nodes, peaking at about 0.35 with 5 nodes an embedding size of 64. Therefore, the results were slightly worse than with the base LSTM.
+
 ![evls_nodes_multi](https://user-images.githubusercontent.com/47925992/102675464-55f05380-414e-11eb-8548-acf881bbf153.png)
 For the word tests, we kept the epochs constant at 10 and instead opted to change the embedding vector length and the number of nodes in our baset LSTM. Our best accuracy
 
 ![evls_nodes_multi_bi](https://user-images.githubusercontent.com/47925992/102675465-5688ea00-414e-11eb-8857-9b6237b122e3.png)
 Bidirectional does not seem to significantly improve performance over a base LSTM.
 
-![evls_nodes](https://user-images.githubusercontent.com/47925992/102675469-57218080-414e-11eb-9fe3-c4458c226e4f.png)
-Varying the embedding length gave interesting results. It seems like length 32 with 15 LSTM nodes had the highest accuracy here.
-
-![evls_nodes_bidirectional](https://user-images.githubusercontent.com/47925992/102675470-57218080-414e-11eb-8479-e1064354588f.png)
-The bidirectional LSTM had a lower variance than the base LSTM but roughly the same average accuracy across all nodes.
 
 
 Finally, we describe our overall results.
