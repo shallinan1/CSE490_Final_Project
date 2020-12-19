@@ -49,11 +49,18 @@ We evaluated our results using test accuracy: how many in the test set our model
 
 ### Character Level Results with Full Sequence Padding
 ![epochsnodesBaseLstm](https://user-images.githubusercontent.com/28735634/102581159-d6627600-40b4-11eb-83b4-b073133c8dda.png)
+This one had a batch size of 16 and a padding size of 500. Note the accuracy for 50 nodes at 5 epochs is high but it decreases as the number of epochs increases. This could imply that we are overfitting at 50 nodes.
 ![epochsnodes2](https://user-images.githubusercontent.com/28735634/102577550-19b8e680-40ad-11eb-9a61-43e7fc0fcc93.png)
+This model performed significantly worse than without dropout.
+This one had a batch size of 16 and a padding size of 500. The accuracy semed to go down then back up throughout the epochs.
 ![twodropoutbidirectional](https://user-images.githubusercontent.com/28735634/102665497-c2148c80-4139-11eb-9334-c298002e6d8e.png)
+This model performed significantly worse than without dropout.
 ![truncationbase](https://user-images.githubusercontent.com/28735634/102665498-c345b980-4139-11eb-8bab-81097551a755.png)
+This model also performed significantly worse than without truncation.
 ![dropoutnodes](https://user-images.githubusercontent.com/28735634/102665499-c345b980-4139-11eb-90a2-88ec474b9783.png)
+Seems like dropout is not the move
 ![epochsBatchSizeBase](https://user-images.githubusercontent.com/28735634/102665671-13248080-413a-11eb-8804-141df86c8956.png)
+The batch size seems not to affect the accuracy very much.
 
 ### Word Level Results with Full Sequence Padding
 ![evls_nodes_multi](https://user-images.githubusercontent.com/47925992/102675464-55f05380-414e-11eb-8548-acf881bbf153.png)
