@@ -3,8 +3,7 @@
 ### CSE 490G1 Final Project
 
 ## Abstract
-
-In this project we analyze informal NBA player interviews in an effort to estimate player sentiment. We use Bidirectional and Base LSTM models to process the interviews and end up with a peak accuracy of around 35-40%. With more data, we expect this accuracy to increase drastically.
+In this project we analyze informal NBA player interviews in an effort to estimate player sentiment. First, we construct a novel corpus consisting of informal player interviews and annotated sentiment on a scale of 0-3. Next, we build sentiment classification models using various LSTM networks, and end up with average accuracies of our best models around 43%, and peak accuracy (a single run) of about 51%. With more data, we expect this accuracy to increase drastically.
 
 ## Video
 
