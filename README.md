@@ -6,7 +6,7 @@
 
 In this project we analyze informal NBA player interviews in an effort to estimate player sentiment. We use Bidirectional and Base LSTM models to process the interviews and end up with a peak accuracy of around 35-40%. With more data, we expect this accuracy to increase drastically.
 
-[![Video](https://img.youtube.com/vi/bETRLMpLvsU/0.jpg)](https://www.youtube.com/watch?v=u0XEFaEItrQ)
+[![Video](https://img.youtube.com/vi/MgP0RqchFjE/0.jpg)](https://www.youtube.com/watch?v=MgP0RqchFjE)
 
 ## Introduction
 
