@@ -103,6 +103,8 @@ Additionally, since the size/length of the interviews varied so much (from just 
 
 We could also look into pre-trained word embeddings like glove which show similarities between words (for example, if there is a vector that corresponds to the word: “king”, we could subtract the vector for “man” and add the vector for “woman” and get a vector that looks like “queen”. This could be useful when a new word shows up in a new interview that we have not seen before but is very similar to another word: (think “magnificent” and “great” as an example).
 
+We could also consider doing more complex annotations other than a simple 0-3 number. For example, if the interview is "We fought well today and ultimately we got the win together as a team", the annotation could be "This player won and likes his team".
+
 ## Demo
 ![Demo](https://user-images.githubusercontent.com/28735634/102678608-6f999700-415e-11eb-8b0c-35262254834c.gif)
 
