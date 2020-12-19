@@ -76,3 +76,6 @@ In the future, we want to use something like this to predict trades before they 
 
 Additionally, since the size/length of the interviews varied so much (from just a few sentences to paragraphs in length), we also want to consider more deeply sub-sampling because we believe it could be very promising if we had more data.
 
+## Demo
+![Demo](https://user-images.githubusercontent.com/28735634/102678608-6f999700-415e-11eb-8b0c-35262254834c.gif)
+
