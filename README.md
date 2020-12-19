@@ -9,7 +9,7 @@ In this project we analyze informal NBA player interviews in an effort to estima
 ## Video
 
 [![Video](https://user-images.githubusercontent.com/28735634/102682177-63bccd80-417c-11eb-9667-0600366757ab.png)](https://www.youtube.com/watch?v=MgP0RqchFjE)
-(click the image to view the video)
+(click the image or [this link](https://www.youtube.com/watch?v=MgP0RqchFjE) to view the video)
 ## Introduction
 
 In the National Basketball Association (NBA), teamwork is essential. However, chemistry issues between teammates often plague teams, leading to issues on and off the court, potentially leading to losses, social media bouts, and players being traded to other teams. It is therefore essential for teams to identify and remediate public and private discontent expressed by its players to prevent implosions.
