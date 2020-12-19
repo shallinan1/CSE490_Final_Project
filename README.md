@@ -1,4 +1,4 @@
-# Classifying NBA Player Sentiment Through Player Interviews
+# Classifying NBA Player Sentiment with a New Corpus
 ## Skyler Hallinan, Arthur Beyer
 ### CSE 490G1 Final Project
 
@@ -45,6 +45,8 @@ Once we had all the data we were going to use for this project, we started worki
 
 ## Results
 
+We evaluated our results using test accuracy: how many in the test set our model got correct divided by how many total are in the test set.
+
 How did you evaluate your approach? How well did you do? What are you comparing to? Maybe you want ablation studies or comparisons of different methods.
 
 You may want some qualitative results and quantitative results. Example images/text/whatever are good. Charts are also good. Maybe loss curves or AUC charts. Whatever makes sense for your evaluation.
@@ -57,7 +59,7 @@ You may want some qualitative results and quantitative results. Example images/t
 ![dropoutnodes](https://user-images.githubusercontent.com/28735634/102665499-c345b980-4139-11eb-90a2-88ec474b9783.png)
 ![epochsBatchSizeBase](https://user-images.githubusercontent.com/28735634/102665671-13248080-413a-11eb-8804-141df86c8956.png)
 
-###
+### Word Level Results with Full Sequence Padding
 ![evls_nodes_multi](https://user-images.githubusercontent.com/47925992/102675464-55f05380-414e-11eb-8548-acf881bbf153.png)
 ![evls_nodes_multi_bi](https://user-images.githubusercontent.com/47925992/102675465-5688ea00-414e-11eb-8857-9b6237b122e3.png)
 ![bsize_nodes](https://user-images.githubusercontent.com/47925992/102675466-5688ea00-414e-11eb-8aab-282f2d900b5c.png)
