@@ -6,28 +6,28 @@ In this project we analyze informal NBA player interviews in an effort to estima
 
 ## Video
 
-[![Video](https://user-images.githubusercontent.com/28735634/102682177-63bccd80-417c-11eb-9667-0600366757ab.png)](https://www.youtube.com/watch?v=MgP0RqchFjE)
-(click the image or [this link](https://www.youtube.com/watch?v=MgP0RqchFjE) to view the video)
+[![Video](https://user-images.githubusercontent.com/28735634/102682177-63bccd80-417c-11eb-9667-0600366757ab.png)](https://www.youtube.com/watch?v=sd5wDg6kL_U)
+(click the image or [this link](https://www.youtube.com/watch?v=sd5wDg6kL_U) to view the video)
 ## Introduction
 
 In the National Basketball Association (NBA), teamwork is essential. However, chemistry issues between teammates often plague teams, leading to issues on and off the court, potentially leading to losses, social media bouts, and players being traded to other teams. It is therefore essential for teams to identify and remediate public and private discontent expressed by its players to prevent implosions.
  
 One example of such an implosion was on the Minnesota Timberwolves in 2019. After a particularly rough stretch former player Jimmy Butler famously challenged his teammates, saying “You f——ng need me! You can’t win without me!” This caused a rift and days later he was traded to another team. Although chemistry issues sometimes manifest in these explicit and obvious forms, other problems may be more subtle. Before he was traded, former Cleveland Cavalier Isaiah Thomas remarked to reporters, “That’s what this team has been this whole season: inconsistent.” Although not as direct as Butler’s statement, this was a similarly negative statement to Butler’s, showing his discontent with the team. 
     
-To target and dispel these issues associated with player unhappiness, in this work we seek to build an automatic classifier that can quickly assess the sentiment given a particular response or interview from a player. Although there exists one dataset of NBA player interviews, almost all of the data comes from formal press conferences which often involve other players, coaches, and/or a more scrutinous media; this may restrict the extent to which players speak freely and may not be helpful to annotate on sentiment, as we anticipate a homogenous set of somewhat uncontroversial responses.
+To target and dispel these issues associated with player unhappiness, in this work we seek to build an automatic classifier that can quickly assess the sentiment given a particular response or interview from a player. General sentiment classifiers exist, but they they have not been trained on any NBA player speech and are not therefore not well-suited for this setting. Therefore, we must build a classifier trained on an NBA-specific dataset. Although there exists one dataset of NBA player interviews, almost all of the data comes from formal press conferences which often involve other players, coaches, and/or a more scrutinous media; this may restrict the extent to which players speak freely and may not be helpful to annotate on sentiment, as we anticipate a homogenous set of somewhat uncontroversial responses.
 
-Instead, we train our model on informal postgame, pregame, and post-practice interviews, which we denote Informal Game and Practice Interviews (IGPIs). These interviews are semi-structured, question-and-answer style discussions, where players freely answer questions from reporters without the influence of coaches or teammates. As such, IGPIs may reveal important insights into a player’s relationships with their team and coaching staff. 
+Instead, we decide to train our model on informal postgame, pregame, and post-practice interviews, which we denote Informal Game and Practice Interviews (IGPIs). These interviews are semi-structured, question-and-answer style discussions, where players freely answer questions from reporters without the influence of coaches or teammates. As such, IGPIs may reveal important insights into a player’s relationships with their team and coaching staff. 
 
-However, there is a lack of public annotated IGPIs. To remediate this, we present a novel
-corpus of about 150 IGPIs ranging from one to ten minutes each, from 33 players over the last three years, each transcribed verbatim from publicly available video interviews online on YouTube and on NBA.com. We also provide metadata related to these interviews, such as the date, the player name, and what team they were on. Finally, we also provide sentiment annotations for each interview for our classification task, using a scale from 0-3.
+To remediate the lack of publicly available IGPIs online, we present a novel corpus of almost 150 IGPIs ranging from one to ten minutes each, from 33 players over the last three years, each transcribed verbatim from publicly available video interviews online on YouTube and on NBA.com. We also provide metadata related to these interviews, such as the date, the player name, and what team they were on. Finally, we also provide sentiment annotations for each interview for our classification task, using a scale from 0-3.
 
-With the new corpus, we train several sentiment classification models with a variety of LSTM architectures on both character and word level embeddings and demonstrate the advantages and disadvantages. Finally, we show a demonstration of our system in use.
+With the new corpus, we train several sentiment classification models with a variety of LSTM architectures on both character encodings and word level embeddings and demonstrate the advantages and disadvantages. Finally, we show a demonstration of our system in use.
 
 
 ## Related Work
 
-We found a study that predicted in-game performances based on previous performance metrics in addition to player interviews before the game. This study used neural networks to combine text data and numerical performance data into one model. They tried many different approaches including Bag of Words with TFIDF, LSTM, BiLSTM, DNN, CNN, and a BERT model. Their accuracy exceeded that of analyzing performance metrics alone. The biggest difference between their study and ours is that they were able to draw from over 5,000 player interviews across 10 years whereas we were limited to however much we could closely transcribe in a couple weeks: 143 interviews.
-https://arxiv.org/abs/1910.11292
+ A previous study, [Predicting In-game Actions from Interviewsof NBA Players](https://arxiv.org/pdf/1910.11292.pdf) predicted in-game performance statistics of NBA players, such as points, rebounds, and assists, based on both their previous performance metrics and their player interviews before the game. Note that the interview data they used is the aformentioned dataset from the introduction, consisting almost entirely of press conference interviews.
+ 
+This study used neural networks to combine text data and numerical performance data into one model. They tried many different approaches including Bag of Words with TFIDF, as well as recurrent neural network models (LSTM, BiLSTM), transformer-based models (BERT), convolutional neural networks (CNN), and deep neural networks (DNN). Utilizing both interviews and previous peformance, the prediction accuracy exceeded that of analyzing performance metrics alone. The biggest difference between their study and ours is that they were able to draw from over 5,000 player interviews across 10 years whereas we were limited to however much we could closely transcribe in a couple weeks: 143 interviews.
 
 
 ## Approach
