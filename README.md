@@ -42,7 +42,6 @@ Character Level Results with Full Sequence Padding
 ![evls_nodes_multi](https://user-images.githubusercontent.com/47925992/102675464-55f05380-414e-11eb-8548-acf881bbf153.png)
 ![evls_nodes_multi_bi](https://user-images.githubusercontent.com/47925992/102675465-5688ea00-414e-11eb-8857-9b6237b122e3.png)
 ![bsize_nodes](https://user-images.githubusercontent.com/47925992/102675466-5688ea00-414e-11eb-8aab-282f2d900b5c.png)
-![epochsnodes (1)](https://user-images.githubusercontent.com/47925992/102675467-5688ea00-414e-11eb-851d-7d2c9b21b487.png)
 ![evls_nodes](https://user-images.githubusercontent.com/47925992/102675469-57218080-414e-11eb-9fe3-c4458c226e4f.png)
 ![evls_nodes_bidirectional](https://user-images.githubusercontent.com/47925992/102675470-57218080-414e-11eb-8479-e1064354588f.png)
 ![bsize_nodes_bidirectional](https://user-images.githubusercontent.com/47925992/102675471-57218080-414e-11eb-979c-339346806614.png)
