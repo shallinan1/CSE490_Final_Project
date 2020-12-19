@@ -89,10 +89,10 @@ Below are first our character level sequence model results:
 
 ### Character Level Results with Full Sequence Padding
 ![epochsBatchSizeBase](https://user-images.githubusercontent.com/28735634/102665671-13248080-413a-11eb-8804-141df86c8956.png)
-We first tested batch size vs number of nodes in our LSTM. However, the batch size seemed to not to affect the accuracy very much, but 16 was the best. We used this as our batch size for all future experiments with this character-based model. Next, we tested the number of epochs in our model vs the number of nodes in our LSTM:
+We first tested batch size vs number of nodes in one LSTM using 10 epochs. However, the batch size seemed to not to affect the accuracy very much, but 16 was the best. We had a max of about 0.375 with 100 noes and a batch size of 16. We used 16 as our batch size for all future experiments with this character-based model. Next, we tested the number of epochs in our model vs the number of nodes in our LSTM:
 
 ![epochsnodesBaseLstm](https://user-images.githubusercontent.com/28735634/102581159-d6627600-40b4-11eb-83b4-b073133c8dda.png)
-This one had a batch size of 16 and a padding size of 500. Note the accuracy for 50 nodes at 5 epochs is high but it decreases as the number of epochs increases. This could imply that we are overfitting at 50 nodes.
+Using a batch size of 16 and one LSTM, we varied number of nodes in our LSTM and the number of epochs. Note the accuracy for 50 nodes at 5 epochs is high at 0.43 but it decreases as the number of epochs increases. This could imply that we are overfitting with too many epochs. Overall, the max average classification accuracy here was with 50 LSTM nodes and an accuracy of 0.43.
 
 ![epochsnodes2](https://user-images.githubusercontent.com/28735634/102577550-19b8e680-40ad-11eb-9a61-43e7fc0fcc93.png)
 This model performed significantly worse than without dropout.
@@ -101,12 +101,12 @@ This one had a batch size of 16 and a padding size of 500. The accuracy semed to
 ![twodropoutbidirectional](https://user-images.githubusercontent.com/28735634/102665497-c2148c80-4139-11eb-9334-c298002e6d8e.png)
 This model performed significantly worse than without dropout.
 
-![truncationbase](https://user-images.githubusercontent.com/28735634/102665498-c345b980-4139-11eb-8bab-81097551a755.png)
-This model also performed significantly worse than without truncation.
-
 ![dropoutnodes](https://user-images.githubusercontent.com/28735634/102665499-c345b980-4139-11eb-90a2-88ec474b9783.png)
 Seems like dropout is not the move
 
+
+![truncationbase](https://user-images.githubusercontent.com/28735634/102665498-c345b980-4139-11eb-8bab-81097551a755.png)
+This model also performed significantly worse than without truncation.
 
 ### Word Level Results with Full Sequence Padding
 ![evls_nodes_multi](https://user-images.githubusercontent.com/47925992/102675464-55f05380-414e-11eb-8548-acf881bbf153.png)
