@@ -40,7 +40,7 @@ Once we had the interviews annotated, we next had to annotate the sentiment for 
 * 3: Extremely happy/content
 This took about 2 minutes per interview so roughly 4 hours total
 
-Once we had all the data we were going to use for this project, we started working on finding the best model that could fit our data. We considered parsing our data character-by-character and word-by-word. We also considered using a bag-of-words approach but thought that sequence based models would perform better than simply counting appearances of words. For this 
+Once we had all the data we were going to use for this project, we started working on finding the best model that could fit our data. We considered parsing our data character-by-character and word-by-word. We also considered using a bag-of-words approach but thought that sequence based models would perform better than simply counting appearances of words. For this reason, we relied on LSTM and Bidirectional LSTM models for both character-by-character and word-by-word parsing. We also tried multi-layer LSTM models but found that it offered little benefit, if any to the accuracy. Since the interviews varied significantly in length, we briefly explored sub-sampling but found that it made the accuracy way worse, little better than guessing. We found that character-by-character parsing performed slightly better after tuning hyper-parameters.
 
 ## Results
 
@@ -67,5 +67,9 @@ Character Level Results with Full Sequence Padding
 
 ## Discussion
 
-You can talk about your results and the stuff you've learned here if you want. Or discuss other things. Really whatever you want, it's your project.
+Before this project, we knew that machine learning took a lot of data to be effective but we did not know how much work and time needs to go into generating the data. Even after over 40 hours combined of work, the we still feel like we had a tiny dataset. Since we had so little data, we certainly were not expecting super high accuracies. With something as complicated as natural language processing, we were expecting abysmal results with only 143 data points. But we actually got a relatively high accuracy all things considered: hovering around 35-40% which is significantly better than guessing which should be around 25%. If we had more data, we expect our accuracy to increase significantly.
+
+In the future, we want to use something like this to predict trades before they occur: if a player is consistently receiving low sentiment marks in his interviews, it likely means he wants out of a team and a trade is imminent.
+
+Additionally, since the size/length of the interviews varied so much (from just a few sentences to paragraphs in length), we also want to consider more deeply sub-sampling because we believe it could be very promising if we had more data.
 
