@@ -34,10 +34,10 @@ Other people are out there doing things. What did they do? Was it good? Was it b
 One of the biggest parts of this project was the annotation. We spent a collective roughly 40 hours meticulously annotating the interviews verbatim. We even included words like “Um” and “Uh” and included all punctuation, to the best of our ability. (We estimate each interview is 4 minutes long. And for each interview minute, it takes about 4 minutes to annotate, so each interview roughly takes 16 minutes to annotate. We have 143 interviews, so that’s 16*143=2288 minutes converted to hours is about 40 hours).
 
 Once we had the interviews annotated, we next had to annotate the sentiment for each interview. We chose a sentiment score from 0 to 3 for each player where we perceived their attitude to be:
-<0: Extremely unhappy/discontent
-<1: Somewhat unhappy/discontent
-<2: Somewhat happy/content
-<3: Extremely happy/content
+* 0: Extremely unhappy/discontent
+* 1: Somewhat unhappy/discontent
+* 2: Somewhat happy/content
+* 3: Extremely happy/content
 This took about 2 minutes per interview so roughly 4 hours total
 
 Once we had all the data we were going to use for this project, we started working on finding the best model that could fit our data. We considered parsing our data character-by-character and word-by-word. We also considered using a bag-of-words approach but thought that sequence based models would perform better than simply counting appearances of words. For this 
