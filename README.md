@@ -45,11 +45,7 @@ Once we had all the data we were going to use for this project, we started worki
 
 ## Results
 
-We evaluated our results using test accuracy: how many in the test set our model got correct divided by how many total are in the test set.
-
-How did you evaluate your approach? How well did you do? What are you comparing to? Maybe you want ablation studies or comparisons of different methods.
-
-You may want some qualitative results and quantitative results. Example images/text/whatever are good. Charts are also good. Maybe loss curves or AUC charts. Whatever makes sense for your evaluation.
+We evaluated our results using test accuracy: how many in the test set our model got correct divided by how many total are in the test set. Even though our accuracy in these graphs seems low, we believe it is actually high considering how little data we had (see Discussion section).
 
 ### Character Level Results with Full Sequence Padding
 ![epochsnodesBaseLstm](https://user-images.githubusercontent.com/28735634/102581159-d6627600-40b4-11eb-83b4-b073133c8dda.png)
