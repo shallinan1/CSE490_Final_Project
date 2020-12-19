@@ -110,14 +110,14 @@ Overall, our character-level model had a best case average model accuracy on the
 Next, we moved on to the word sequence experiments.
 
 ### Word Level Results with Full Sequence Padding
+![bsize_nodes](https://user-images.githubusercontent.com/47925992/102675466-5688ea00-414e-11eb-8aab-282f2d900b5c.png)
+For our word sequence experiments, we first looked at the effects of batch size on our data, as we also varied number of nodes in our singel LSTM. Batch size did seem to change the accuracy of the model but oddly, a batch size of 16 performed well but a batch size of 64 performed arguably just as well, just with a higher variance. We used a batch size of 16 for the rest of our experiments. Note our max accuracy was about 0.36 here with 5 LSTM nodes.
+
 ![evls_nodes_multi](https://user-images.githubusercontent.com/47925992/102675464-55f05380-414e-11eb-8548-acf881bbf153.png)
-For the word tests, we kept the epochs constant at 10 and instead opted to change the embedding vector length and the batch size.
+For the word tests, we kept the epochs constant at 10 and instead opted to change the embedding vector length and the number of nodes in our baset LSTM. Our best accuracy
 
 ![evls_nodes_multi_bi](https://user-images.githubusercontent.com/47925992/102675465-5688ea00-414e-11eb-8857-9b6237b122e3.png)
 Bidirectional does not seem to significantly improve performance over a base LSTM.
-
-![bsize_nodes](https://user-images.githubusercontent.com/47925992/102675466-5688ea00-414e-11eb-8aab-282f2d900b5c.png)
-The batch size did seem to change the accuracy of the model but oddly, a batch size of 16 performed well but a batch size of 64 performed arguably just as well, just with a higher variance.
 
 ![evls_nodes](https://user-images.githubusercontent.com/47925992/102675469-57218080-414e-11eb-9fe3-c4458c226e4f.png)
 Varying the embedding length gave interesting results. It seems like length 32 with 15 LSTM nodes had the highest accuracy here.
