@@ -34,7 +34,7 @@ This study used neural networks to combine text data and numerical performance d
 
 The first step of the project was the data collection and annotation. Our original goal was to annotate and label 300 interviews, 10 from each of the 30 teams in the NBA, so we randomly selected 10 interviews from each team in the NBA happening from 2016-2019 that was available on YouTube or NBA.com. However, we overestimated our capability and ended up transcribing and annotating on average about 5 interviews from each team.
 
-We spent a collective roughly 40 hours annotating the interviews verbatim. This means we included words like “Um” and “Uh”, pauses, stutters, and all punctuation to the best of our ability. We estimate each interview on average was 4 minutes long and for each interview minute, it took about 4 minutes to completely annotate. On average, each interview then took 16 minutes to annotate. We annotated 143 interviews, so that’s 16\*143 = 2288 minutes = about 40 hours.
+We spent a collective roughly 40 hours annotating the interviews verbatim. This means we included words like “Um” and “Uh”, pauses, stutters, and all punctuation to the best of our ability. We estimate each interview on average was 4 minutes long and for each interview minute, it took about 4 minutes to completely annotate. On average, each interview then took 16 minutes to annotate. We annotated 143 interviews, so that’s 16\*143 = 2288 minutes = about 40 hours. Note that for each interview, we also included the date of the interview, the player name, and what team they were on.
 
 Once we had the interviews annotated, we next had to annotate the sentiment for each interview. We chose a sentiment score from 0 to 3 for each player where we perceived their attitude to be:
 * 0: Extremely unhappy/discontent
@@ -43,17 +43,39 @@ Once we had the interviews annotated, we next had to annotate the sentiment for 
 * 3: Extremely happy/content
 This took about 2 minutes per interview so roughly an additional 4 hours total.
 
-We did a little bit of pre-processing on our data: we removed punctuation from the text, converted the 0-3 sentiment scores to one-hot vectors, and converted the words/characters to vectors by using keras’ pad_sequence which adds or truncates data from the text vector if it is not the proper length. We also split up our data into train and test sets to make sure our teset accuracy was accurate.
 
-Once we had all the data preprocessed, we started working on finding the best model that could fit our data. We considered parsing our data character-by-character and word-by-word. We also considered using a bag-of-words approach but thought that sequence based models would perform better than simply counting appearances of words. For this reason, we relied on LSTM and Bidirectional LSTM models for both character-by-character and word-by-word parsing. A Bidirectional LSTM is an LSTM that takes into account future words into its prediction. For both character and word, we also tried multi-layer LSTM models because we thought that a more complicated model could perform better than the simpler models we tried earlier but found that it offered little benefit, if any to the accuracy. This is probably because we were already overfitting with the simpler model based on the limited amount of data we had. We also tried varying the batch size for both character and word based models as another hyper-parameter test. To generate the data, we took averages of 3 runs for each of the settings of the hyper-parameters to ensure that we were not getting bogus results.
+Once we had all the data preprocessed, we started working on finding the best model  to classify sentiment scores for text from NBA players. We considered parsing our data into character-by-character and word-by-word sequences. We also considered using a bag-of-words approach but thought that sequence based models would perform better than simply counting appearances of words. Thus, we decided to try to compare two models: a character sequence model, and a word sequence model. 
+
+An LSTM is a recurrent neural network especially useful for sequence tasks that rely on time-series data, such as text sequences due to its cell memory unit. For this reason, we relied on using LSTM as our core layer when model building. We also experimented with Bidirectional LSTM, an LSTM that takes into account future words into its prediction, along with the past; we thought this might improve our classification accuracy. Finally, we experimented with using multi-layer LSTM models because we thought that a more complicated model could perform better than the simpler models we tried earlier. 
+
+First, we started off with a character-level model. Our pipeline was as follows:
+
+1. Convert each character in text sequences to integer embedding
+2. Pad sequences so they all have same length
+3. One-hot encode sentiment labels
+4. Split up into train/test data
+5. Train model and try different architectures and hyperparameters
+
+For step 5, we tried varying the following to see how they could affect our classification accuracy: batch size, epochs, LSTM type, number of LSTMs, number of nodes in LSTMs, and dropout layers. Our overall network was of the following form:
 
 ![132012084_671673920184354_8767085777290283440_n](https://user-images.githubusercontent.com/47925992/102682350-c6629900-417d-11eb-8fca-202a603ccbcf.png)
-We varied the following unique hyper-parameters in character-based parsing:
-* dropout rate
-* epochs
-We found that character-by-character parsing performed slightly better after tuning hyper-parameters. 
+
+We had a masking layer after our input to ignore parts of the sequence that were just padding. From the above diagram, we extensively explored the following type of networks with different hyperparameters: LSTM, birectional LSTM, LSTM with dropout, birectional LSTM with drouput. Note that although our diagram includes multi-layer LSTM networks, we did not generate extensive data for that due to poor performance.
+
+Next, we started off with a word-level model. Our pipeline was as follows:
+
+1. Preprocess data by removing punctuation
+2. Convert each word in text sequences to integer embedding with fixed vocab size
+3. Pad sequences so they all have same length
+4. One-hot encode sentiment labels
+5. Split up into train/test data
+6. Train model (right)
+
+For step 1, our preprocessing consisted of removing punctuation from the text. For step 5, we tried varying the following to see how they could affect our classification accuracy: batch size, type of LSTM, number of LSTMs, number of nodes in LSTMs, and word embedding vector size.  For the word-based model, we chose to use a word embedding to increase the dimensionality of our words and improve their representaions; by mapping them to a higher dimensional space, we could capture complex relationships between similar and different words. We did not need to do this with the character model, since character's don't have as well-defined relationships with eachother as words do. Our overall network was of the fllowing form:
 
 ![131986515_427335658675797_4274136360118186489_n](https://user-images.githubusercontent.com/47925992/102682351-c6629900-417d-11eb-951b-7a93af0b525c.png)
+
+Once again, we had a masking layer to ignore parts of the sequence that were just padding.
 For the word based sequencing, we tried varying the word embedding length which gave interesting results. Since the interviews varied significantly in length, we briefly explored sub-sampling but found that it made the accuracy way worse, little better than guessing.
 
 ## Results
