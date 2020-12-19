@@ -2,7 +2,7 @@
 ## Skyler Hallinan, Arthur Beyer
 ### CSE 490G1 Final Project, 12.18.2020
 ## Abstract
-In this project we analyze informal NBA player interviews in an effort to estimate player sentiment. First, we construct a novel corpus consisting of informal player interviews and annotated sentiment on a scale of 0-3. Next, we build sentiment classification models using various LSTM networks, and end up with average accuracies of our best models around 43%, and peak accuracy (a single run) of about 51%. With more data, we expect this accuracy to increase drastically.
+In this project we analyze informal NBA player interviews in an effort to estimate player sentiment. First, we construct a novel corpus consisting of informal player interviews and annotated sentiment on a scale of 0-3. Next, we build sentiment classification models using various LSTM networks, and end up with average accuracies of our best models around 43%, and peak accuracy (of a single model) of about 51%. With more data, we expect this accuracy to increase drastically.
 
 ## Video
 
@@ -25,21 +25,23 @@ With the new corpus, we train several sentiment classification models with a var
 
 ## Related Work
 
- A previous study, [Predicting In-game Actions from Interviewsof NBA Players](https://arxiv.org/pdf/1910.11292.pdf) predicted in-game performance statistics of NBA players, such as points, rebounds, and assists, based on both their previous performance metrics and their player interviews before the game. Note that the interview data they used is the aformentioned dataset from the introduction, consisting almost entirely of press conference interviews.
+A previous study, [Predicting In-game Actions from Interviewsof NBA Players](https://arxiv.org/pdf/1910.11292.pdf) predicted in-game performance statistics of NBA players, such as points, rebounds, and assists, based on both their previous performance metrics and their player interviews before the game. Note that the interview data they used is the aformentioned dataset from the introduction, consisting almost entirely of press conference interviews.
  
-This study used neural networks to combine text data and numerical performance data into one model. They tried many different approaches including Bag of Words with TFIDF, as well as recurrent neural network models (LSTM, BiLSTM), transformer-based models (BERT), convolutional neural networks (CNN), and deep neural networks (DNN). Utilizing both interviews and previous peformance, the prediction accuracy exceeded that of analyzing performance metrics alone. The biggest difference between their study and ours is that they were able to draw from over 5,000 player interviews across 10 years whereas we were limited to however much we could closely transcribe in a couple weeks: 143 interviews.
+This study used neural networks to combine text data and numerical performance data into one model. They tried many different approaches including Bag of Words with TFIDF, as well as recurrent neural network models (LSTM, BiLSTM), transformer-based models (BERT), convolutional neural networks (CNN), and deep neural networks (DNN). Utilizing both interviews and previous peformance, the accuracy of the model exceeded that of using performance metrics alone, and their model-building was thus sucessful. The biggest difference between their study and ours is that they were able to draw from over 5,000 player interviews across 10 years whereas we were limited to however much we could closely transcribe in a couple weeks: 143 interviews. In addition, their data was biased heavily towards players who participated in the playoffs, as a large prorportion of the data came from playoff interviews, while our data equally represented players from all teams.
 
 
 ## Approach
 
-One of the biggest parts of this project was the annotation. We spent a collective roughly 40 hours meticulously annotating the interviews verbatim. We even included words like “Um” and “Uh” and included all punctuation, to the best of our ability. (We estimate each interview is 4 minutes long. And for each interview minute, it takes about 4 minutes to annotate, so each interview roughly takes 16 minutes to annotate. We have 143 interviews, so that’s 16*143=2288 minutes converted to hours is about 40 hours).
+The first step of the project was the data collection and annotation. Our original goal was to annotate and label 300 interviews, 10 from each of the 30 teams in the NBA, so we randomly selected 10 interviews from each team in the NBA happening from 2016-2019 that was available on YouTube or NBA.com. However, we overestimated our capability and ended up transcribing and annotating on average about 5 interviews from each team.
+
+We spent a collective roughly 40 hours annotating the interviews verbatim. This means we included words like “Um” and “Uh”, pauses, stutters, and all punctuation to the best of our ability. We estimate each interview on average was 4 minutes long and for each interview minute, it took about 4 minutes to completely annotate. On average, each interview then took 16 minutes to annotate. We annotated 143 interviews, so that’s 16\*143 = 2288 minutes = about 40 hours.
 
 Once we had the interviews annotated, we next had to annotate the sentiment for each interview. We chose a sentiment score from 0 to 3 for each player where we perceived their attitude to be:
 * 0: Extremely unhappy/discontent
 * 1: Somewhat unhappy/discontent
 * 2: Somewhat happy/content
 * 3: Extremely happy/content
-This took about 2 minutes per interview so roughly 4 hours total
+This took about 2 minutes per interview so roughly an additional 4 hours total.
 
 We did a little bit of pre-processing on our data: we removed punctuation from the text, converted the 0-3 sentiment scores to one-hot vectors, and converted the words/characters to vectors by using keras’ pad_sequence which adds or truncates data from the text vector if it is not the proper length. We also split up our data into train and test sets to make sure our teset accuracy was accurate.
 
