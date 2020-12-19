@@ -130,7 +130,13 @@ The batch size seems to have a medium point where the variance explodes then get
 Finally, we describe our overall results.
 ### Overall results
 ![best_char](https://user-images.githubusercontent.com/28735634/102678550-32cda000-415e-11eb-81b4-4ae04ec08066.png)
+
+Overall, the character-models performed better than the word-based model with the bidirectional LSTM and without the LSTM, peaking with an average classification accuracy of about 0.43. The ideal number of LSTM nodes to use hear was about 25-100.
+
 ![best_Word](https://user-images.githubusercontent.com/28735634/102678553-33fecd00-415e-11eb-86dc-f5e16fb7949a.png)
+
+
+The word-based models had lower accuracy and peaked at about 0.39. They seemed to perform best with a stacked bidirectionl LSTM and 35 nodes in the second LSTM, and 50 nodes in the first LSTM, achieving the highest classification accuracy. Overall, the results were varied across network types, but all were worse than the character-based models.
 
 ## Discussion
 
