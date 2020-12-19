@@ -95,18 +95,18 @@ We first tested batch size vs number of nodes in one LSTM using 10 epochs. Howev
 Using a batch size of 16 and one LSTM, we varied number of nodes in our LSTM and the number of epochs. Note the accuracy for 50 nodes at 5 epochs is high at 0.43 but it decreases as the number of epochs increases. This could imply that we are overfitting with too many epochs. Overall, the max average classification accuracy here was with 50 LSTM nodes and an accuracy of 0.43.
 
 ![epochsnodes2](https://user-images.githubusercontent.com/28735634/102577550-19b8e680-40ad-11eb-9a61-43e7fc0fcc93.png)
-This model performed significantly worse than without dropout.
-This one had a batch size of 16 and a padding size of 500. The accuracy semed to go down then back up throughout the epochs.
+We repeated the same experiment as directly above, but using a bidirectional LSTM. Across all node numbers, the accuracy semed to go down then back up throughout the epochs. Overall, we had max accuracies of 0.43 with 25 nodes and 20 epochs and 100 nodes and 3 epochs.
 
-![twodropoutbidirectional](https://user-images.githubusercontent.com/28735634/102665497-c2148c80-4139-11eb-9334-c298002e6d8e.png)
-This model performed significantly worse than without dropout.
 
 ![dropoutnodes](https://user-images.githubusercontent.com/28735634/102665499-c345b980-4139-11eb-90a2-88ec474b9783.png)
-Seems like dropout is not the move
+Next, we tried adding dropout layers before and after to our base LSTM to see how it would affect the accuracy. The accuracy steadily went down for all LSTMs when we increased the dropout proportion, and the accuracy even with low dropout was much lower than 0.43, our previous best from other models. Dropout did not help us much here.
 
+![twodropoutbidirectional](https://user-images.githubusercontent.com/28735634/102665497-c2148c80-4139-11eb-9334-c298002e6d8e.png)
+Finally, we repeated the above but with the bidirectional LSTM. Once again, this did not help much and our accuracy plumetted to almost 0.25 for all models, showing that dropout was not helping at all.
 
-![truncationbase](https://user-images.githubusercontent.com/28735634/102665498-c345b980-4139-11eb-8bab-81097551a755.png)
-This model also performed significantly worse than without truncation.
+Overall, our character-level model had a best case average model accuracy on the test set of about 0.43 (proportion) and a best accuracy of about 0.51 for a single model. Batch size of 16 worked best, and dropout didn't help. LSTM and bidirectional LSTM were equally qualified for our classification task.
+
+Next, we moved on to the word sequence experiments.
 
 ### Word Level Results with Full Sequence Padding
 ![evls_nodes_multi](https://user-images.githubusercontent.com/47925992/102675464-55f05380-414e-11eb-8548-acf881bbf153.png)
@@ -127,7 +127,7 @@ The bidirectional LSTM had a lower variance than the base LSTM but roughly the s
 ![bsize_nodes_bidirectional](https://user-images.githubusercontent.com/47925992/102675471-57218080-414e-11eb-979c-339346806614.png)
 The batch size seems to have a medium point where the variance explodes then gets smaller on both ends of the middle.
 
-
+Finally, we describe our overall results.
 ### Overall results
 ![best_char](https://user-images.githubusercontent.com/28735634/102678550-32cda000-415e-11eb-81b4-4ae04ec08066.png)
 ![best_Word](https://user-images.githubusercontent.com/28735634/102678553-33fecd00-415e-11eb-86dc-f5e16fb7949a.png)
