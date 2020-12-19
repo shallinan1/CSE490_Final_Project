@@ -2,12 +2,11 @@
 ## Skyler Hallinan, Arthur Beyer
 ### CSE 490G1 Final Project
 
+## Abstract
+
 Write a 3-4 sentence abstract. It should introduce the problem and your approach. You may also want some numbers like 35 mAP and 78% accuracy. You can use this example README for your project, you can use a different ordering for your website, or you can make a totally different website altogether!
 
 VIDEO GOES HERE (probably): Record a 2-3 minute long video presenting your work. One option - take all your figures/example images/charts that you made for your website and put them in a slide deck, then record the video over zoom or some other recording platform (screen record using Quicktime on Mac OS works well). The video doesn't have to be particularly well produced or anything.
-
-[![Video](https://img.youtube.com/vi/u0XEFaEItrQ/0.jpg)](https://www.youtube.com/watch?v=u0XEFaEItrQ)
-
 
 ## Introduction
 
@@ -27,7 +26,9 @@ With the new corpus, we train several sentiment classification models with a var
 
 ## Related Work
 
-Other people are out there doing things. What did they do? Was it good? Was it bad? Talk about it here.
+https://arxiv.org/abs/1910.11292
+These people performed a similar analysis on NBA player interviews using neural networks but they also included performance metrics such as shooting percentage to predict player performance. They tried many different approaches including Bag of Words with TFIDF, LSTM, BiLSTM, DNN, CNN, and a BERT model. Their accuracy exceeded that of analyzing performance metrics alone. The biggest difference between their study and ours is that they were able to draw from over 5,000 player interviews across 10 years whereas we were limited to however much we could closely transcribe in a couple weeks: 143 interviews.
+
 
 ## Approach
 
