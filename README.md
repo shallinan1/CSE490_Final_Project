@@ -88,7 +88,7 @@ We evaluated our results using test accuracy: how many in the test set our model
 
 Below are first our character level sequence model results:
 
-### Character Level Results with Full Sequence Padding
+### Character Level Experiment Results with Full Sequence Padding
 ![epochsBatchSizeBase](https://user-images.githubusercontent.com/28735634/102665671-13248080-413a-11eb-8804-141df86c8956.png)
 We first tested batch size vs number of nodes in one LSTM using 10 epochs. However, the batch size seemed to not to affect the accuracy very much, but 16 was the best. We had a max of about 0.375 with 100 noes and a batch size of 16. We used 16 as our batch size for all future experiments with this character-based model. Next, we tested the number of epochs in our model vs the number of nodes in our LSTM:
 
@@ -109,9 +109,12 @@ Overall, our character-level model had a best case average model accuracy on the
 
 Next, we moved on to the word sequence experiments.
 
-### Word Level Results with Full Sequence Padding
+### Word Level Experiment Results with Full Sequence Padding
 ![bsize_nodes](https://user-images.githubusercontent.com/47925992/102675466-5688ea00-414e-11eb-8aab-282f2d900b5c.png)
-For our word sequence experiments, we first looked at the effects of batch size on our data, as we also varied number of nodes in our singel LSTM. Batch size did seem to change the accuracy of the model but oddly, a batch size of 16 performed well but a batch size of 64 performed arguably just as well, just with a higher variance. We used a batch size of 16 for the rest of our experiments. Note our max accuracy was about 0.36 here with 5 LSTM nodes.
+For our word sequence experiments, we first looked at the effects of batch size on our data, as we also varied number of nodes in our single LSTM. Batch size did seem to change the accuracy of the model but oddly, a batch size of 16 performed well but a batch size of 64 performed arguably just as well, just with a higher variance. We used a batch size of 16 for the rest of our experiments. Note our max accuracy was about 0.36 here with 5 LSTM nodes.
+
+![bsize_nodes_bidirectional](https://user-images.githubusercontent.com/47925992/102675471-57218080-414e-11eb-979c-339346806614.png)
+We repeated the above experiment but with a bidrectional LSTM. Differences across batch size were pretty negligible. Here our max accuracy was a batch size of 8, 35 nodes in our LSTM, and an accuracy of 0.37. We note the batch size seems to have a medium point where the variance explodes then gets smaller on both ends of the middle. Overall, even with these results we used 16 as our batch size for our experiments.
 
 ![evls_nodes_multi](https://user-images.githubusercontent.com/47925992/102675464-55f05380-414e-11eb-8548-acf881bbf153.png)
 For the word tests, we kept the epochs constant at 10 and instead opted to change the embedding vector length and the number of nodes in our baset LSTM. Our best accuracy
@@ -125,8 +128,6 @@ Varying the embedding length gave interesting results. It seems like length 32 w
 ![evls_nodes_bidirectional](https://user-images.githubusercontent.com/47925992/102675470-57218080-414e-11eb-8479-e1064354588f.png)
 The bidirectional LSTM had a lower variance than the base LSTM but roughly the same average accuracy across all nodes.
 
-![bsize_nodes_bidirectional](https://user-images.githubusercontent.com/47925992/102675471-57218080-414e-11eb-979c-339346806614.png)
-The batch size seems to have a medium point where the variance explodes then gets smaller on both ends of the middle.
 
 Finally, we describe our overall results.
 ### Overall results
