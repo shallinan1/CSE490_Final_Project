@@ -1,4 +1,4 @@
-# Classifying NBA Player Sentiment with a New Corpus
+# Classifying NBA Player Sentiment with a New Player Interview Corpus
 ## Skyler Hallinan, Arthur Beyer
 ### CSE 490G1 Final Project, 12.18.2020
 ## Abstract
